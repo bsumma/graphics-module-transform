@@ -30,6 +30,8 @@ include_directories(${CMAKE_SOURCE_DIR}/src
 		shaders/vshader_tex.glsl
 		source/common/Angel.h
 		source/common/mat.h
+		source/common/u8names.h
+		source/common/u8names.cpp
 	    source/common/vec.h)
 
 #Windows cleanup
