@@ -52,11 +52,21 @@ const GLfloat  RadiansToDegrees = 180.0/M_PI;
 #include "vec.h"
 #include "mat.h"
 //#include "CheckError.h"
+#ifdef _WIN32
+#include "u8names.h"
+#endif //_WIN32
 
 static char*
 readShaderSource(const char* shaderFile)
 {
+#ifdef _WIN32
+  std::wstring wcfn;
+  if (u8names_towc(shaderFile, wcfn) != 0)
+    return NULL;
+  FILE* fp = _wfopen(wcfn.c_str(), L"rb");
+#else
   FILE* fp = fopen(shaderFile, "rb");
+#endif //_WIN32
   
   if ( fp == NULL ) { return NULL; }
   

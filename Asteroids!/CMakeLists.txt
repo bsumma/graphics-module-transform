@@ -31,6 +31,8 @@ add_executable(asteroids WIN32 MACOSX_BUNDLE
 	source/utils/CheckError.h
 	source/utils/mat.h
 	source/utils/vec.h
+	source/utils/u8names.h
+	source/utils/u8names.cpp
 	shaders/shader.cpp
 	source/main.cpp
 	source/Ship.cpp
