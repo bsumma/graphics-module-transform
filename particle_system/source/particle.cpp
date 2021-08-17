@@ -86,6 +86,9 @@ public:
     glEnableVertexAttribArray( vcolor_location );
     
     glBindVertexArray(0);
+
+    delete[] vertex_shader_source;
+    delete[] fragment_shader_source;
     
   };
   
