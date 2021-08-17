@@ -32,8 +32,6 @@ public:
   
   Particle_System(){};
   ~Particle_System(){
-    for(unsigned int i=0; i < particles.size(); i++)
-      delete particles[i];
     particles.clear();
   }
   
@@ -44,7 +42,7 @@ public:
   GLint vpos_location, vcolor_location;
   GLint PM_location;
 
-  std::vector < Particle * > particles;
+  std::vector < Particle  > particles;
   
   void init(){
     std::string vshader = shader_path + "vshader.glsl";
@@ -97,8 +95,8 @@ public:
     vec3 *col = new vec3[particles.size()];
 
     for(unsigned int i=0; i < particles.size(); i++){
-      pos[i] = particles[i]->loc;
-      col[i] = particles[i]->color;
+      pos[i] = particles[i].loc;
+      col[i] = particles[i].color;
     }
     
     //Set GL state to use this buffer
@@ -122,14 +120,14 @@ public:
   };
   
   void emit(){
-    particles.push_back(new Particle());
+    particles.push_back(Particle());
   };
   
   void step(float dt){
     //Code changes here
-    for (std::vector< Particle * >::iterator it = particles.begin() ; it != particles.end(); ++it){
-      (*it)->vel += (*it)->accel*dt;
-      (*it)->loc += (*it)->vel*dt;
+    for (std::vector< Particle >::iterator it = particles.begin() ; it != particles.end(); ++it){
+      (*it).vel += (*it).accel*dt;
+      (*it).loc += (*it).vel*dt;
     }  
   };
 };
