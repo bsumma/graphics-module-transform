@@ -214,5 +214,6 @@ int main(void)
   glfwDestroyWindow(window);
   
   glfwTerminate();
+  delete my_particles;
   exit(EXIT_SUCCESS);
 }
